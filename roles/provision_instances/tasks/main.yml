@@ -115,14 +115,14 @@
       hostname={{ vm2.networkInterfaces[0].accessConfigs[0].natIP }}
   
   - name: Create an ssh connection
-  hosts: gcp_instances
-  gather_facts: no
-  tasks:
-  - name: Wait for SSH to come up
-    local_action:
-      module: wait_for
-      host: "{{ inventory_hostname }}"
-      port: 22
-      delay: 10
-      timeout: 90
-      state: started
+    hosts: gcp_instances
+    gather_facts: no
+    tasks:
+    - name: Wait for SSH to come up
+      local_action:
+        module: wait_for
+        host: "{{ inventory_hostname }}"
+        port: 22
+        delay: 10
+        timeout: 90
+        state: started
