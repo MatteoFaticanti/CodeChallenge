@@ -65,16 +65,11 @@
         - name: External NAT
           nat_ip: "{{ address1 }}"
           type: ONE_TO_ONE_NAT
-      metadata:
-        items:
-        - key: ssh-keys
-          value: "gcpuser:{{ gcp_ssh_key }}"
       zone: europe-west1-b
       project: "{{ gcp_project }}"
       auth_kind: "{{ gcp_cred_kind }}"
       service_account_file: "{{ gcp_cred_file }}"
       state: present
-    register: vm1
  
   - name: create instance 2
     gcp_compute_instance:
@@ -94,22 +89,8 @@
         - name: External NAT
           nat_ip: "{{ address2 }}"
           type: ONE_TO_ONE_NAT
-      metadata:
-        items:
-        - key: ssh-keys
-          value: "gcpuser:{{ gcp_ssh_key }}"
       zone: europe-west1-b
       project: "{{ gcp_project }}"
       auth_kind: "{{ gcp_cred_kind }}"
       service_account_file: "{{ gcp_cred_file }}"
       state: present
-    register: vm2
-   
-  - name: Add vm1 to groupname
-    add_host:
-      groupname=gcp_instances
-      hostname={{ vm1.networkInterfaces[0].accessConfigs[0].natIP }}
-  - name: Add vm2 to groupname
-    add_host:
-      groupname=gcp_instances
-      hostname={{ vm2.networkInterfaces[0].accessConfigs[0].natIP }}
