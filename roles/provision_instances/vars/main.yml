@@ -1,0 +1,6 @@
+---
+# vars file for provision_instances
+
+gcp_project: ancient-vortex-196211
+gcp_cred_kind: serviceaccount
+gcp_cred_file: "/home/matteo/ancient-vortex-196211-d41d6d452d40.json"
