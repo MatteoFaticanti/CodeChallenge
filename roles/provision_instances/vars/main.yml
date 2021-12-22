@@ -4,4 +4,4 @@
 gcp_project: ancient-vortex-196211
 gcp_cred_kind: serviceaccount
 gcp_cred_file: "/home/matteo/ancient-vortex-196211-d41d6d452d40.json"
-gcp_ssh_key: "{{ lookup('file', '~/.ssh/google_compute_engine.pub') }}"
+gcp_ssh_key: ~/.ssh/google_compute_engine.pub
